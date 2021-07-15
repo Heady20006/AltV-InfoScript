@@ -245,7 +245,7 @@ alt.everyTick(() => {
             vSpeed.Title = `Speed(KM/H): ${(game.getEntitySpeed(alt.Player.local.vehicle.scriptID) * 3.6).toFixed(2)}`;
         }
         vHealth.Title = `EngineHealth: ${game
-            .getEntityHealth(alt.Player.local.vehicle.scriptID)
+            .getVehicleEngineHealth(alt.Player.local.vehicle.scriptID)
             .toFixed(2)}`;
         vPetrolHealth.Title = `PetrolHealth: ${game
             .getVehiclePetrolTankHealth(alt.Player.local.vehicle.scriptID)
