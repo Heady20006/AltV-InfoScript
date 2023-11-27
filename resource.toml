@@ -1,0 +1,4 @@
+client-files = [ 'includes/*' ]
+client-main = 'client.js'
+main = 'index.js'
+type = 'js'
