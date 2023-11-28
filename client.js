@@ -1,11 +1,11 @@
 import * as alt from "alt-client";
 import * as game from "natives";
-import { props as PropList } from "./includes/props";
-import { vehicles as VehicleList } from "./includes/vehicles";
-import { textures as TextureList } from "./includes/textures";
-import { peds as PedList } from "./includes/peds";
-import Raycast from "./includes/raycast";
-import { zones } from "./includes/zones";
+import { props as PropList } from "./includes/props.js";
+import { vehicles as VehicleList } from "./includes/vehicles.js";
+import { textures as TextureList } from "./includes/textures.js";
+import { peds as PedList } from "./includes/peds.js";
+import Raycast from "./includes/raycast.js";
+import { zones } from "./includes/zones.js";
 let InfoBoxes = [];
 let convertToRadiants = false;
 let speedInMP = false;
@@ -399,9 +399,13 @@ alt.everyTick(() => {
     null,
     null
   )[1];
-  let streetZoneDisplay = zones.find(
-    (x) => x.Name == game.getNameOfZone(pos.x, pos.y, pos.z)
-  ).DisplayName;
+  let streetZoneDisplay = "";
+  const foundZone = zones.find((x) => x.Name === game.getNameOfZone(pos.x, pos.y, pos.z));
+  if (foundZone) {
+    streetZoneDisplay = foundZone.DisplayName;
+  } else {
+    streetZoneDisplay = game.getNameOfZone(pos.x, pos.y, pos.z);
+  }
   let streetNameDisplay = game.getStreetNameFromHashKey(streetHash);
   streetZone.Title = "Zone: " + streetZoneDisplay;
   streetName.Title = "Name: " + streetNameDisplay;
